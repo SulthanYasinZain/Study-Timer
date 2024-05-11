@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx.translate(-x, -y);
 
     ctx.strokeStyle = "#3f3f46";
-    ctx.lineWidth = 17;
+    ctx.lineWidth = 17; //a
     ctx.beginPath();
     ctx.arc(
       x,
