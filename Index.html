@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="Setting_timer.js"></script>
+    <script src="timer.js"></script>
+    <script src="canvas.js"></script>
+    <title>Study Clock</title>
+  </head>
+  <body class="bg-zinc-800">
+    <main class="flex flex-col justify-center items-center h-screen">
+      <canvas id="canvas" class="border-solid border-2" height="300px"></canvas>
+      <p id="timer">00:00:00</p>
+      <div>
+        <button id="tombol-timer" class="bg-green-600 rounded-md py-1 px-3">
+          Start
+        </button>
+        <button id="tombol-clear" class="bg-blue-600 rounded-md py-1 px-3">
+          Clear
+        </button>
+      </div>
+
+      <div class="flex space-x-8">
+        <div class="text-center">
+          <p>Every</p>
+          <div class="flex flex-row">
+            <button id="Tombol-waktu"><img src="left.png" alt="" /></button>
+            <p id="waktu-belajar">25</p>
+            <button id="Tombol+waktu"><img src="right.png" alt="" /></button>
+          </div>
+          <p>Minutes</p>
+        </div>
+        <div class="text-center">
+          <p>Break For</p>
+          <div class="flex flex-row">
+            <button id="tombol-istirahat"><img src="left.png" alt="" /></button>
+            <p id="waktu-istirahat">05</p>
+            <button id="tombol+istirahat">
+              <img src="right.png" alt="" />
+            </button>
+          </div>
+          <p>Minutes</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
