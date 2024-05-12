@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       button.classList.add("bg-red-500");
       active = true;
       button.innerText = "Stop";
-      intervalID = setInterval(updateTimer, 1);
+      intervalID = setInterval(updateTimer, 1000);
     } else {
       button.classList.remove("bg-red-500");
       button.classList.add("bg-green-500");

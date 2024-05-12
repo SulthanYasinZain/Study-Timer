@@ -1,14 +1,19 @@
 let active = false;
 let intervalid;
+let interval;
+let intervalistirahat;
 document.addEventListener("DOMContentLoaded", function () {
   let waktuBelajarElement = document.getElementById("waktu-belajar");
   let resettimer = document.getElementById("tombol-clear");
   let waktubelajarplus = document.getElementById("Tombol+waktu");
   let waktubelajarminus = document.getElementById("Tombol-waktu");
+  let waktuIstirahatElement = document.getElementById("waktu-istirahat");
+  let waktuIstirahatplus = document.getElementById("tombol+istirahat");
+  let waktuIstirahatminus = document.getElementById("tombol-istirahat");
+
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
   const button = document.getElementById("tombol-timer");
-
   var x = canvas.width / 2;
   var y = canvas.height;
 
@@ -63,11 +68,11 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawgradient();
     addtext();
-    if (angle > 182) {
-      angle -= 0.1;
+    if (angle > 180) {
+      angle--;
     } else {
       clearInterval(intervalid);
-      intervalId = setInterval(animate, 10);
+      intervalId = setInterval(animate, interval);
     }
     drawSolid(angle);
   }
@@ -77,10 +82,10 @@ document.addEventListener("DOMContentLoaded", function () {
     drawgradient();
     addtext();
     if (angle < 332) {
-      angle += 0.1;
+      angle++;
     } else {
       clearInterval(intervalId);
-      intervalid = setInterval(aniamtedown, 10);
+      intervalid = setInterval(aniamtedown, intervalistirahat);
     }
     drawSolid(angle);
   }
@@ -90,12 +95,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   button.addEventListener("mousedown", function () {
     if (!active) {
-      intervalId = setInterval(animate, 10);
+      intervalId = setInterval(animate, interval);
       active = true;
     } else {
       clearInterval(intervalId);
       clearInterval(intervalid);
       active = false;
+      calcinterval();
     }
   });
 
@@ -108,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
     drawgradient();
     addtext();
     drawSolid(angle);
+    calcinterval();
   });
 
   waktubelajarminus.addEventListener("click", function () {
@@ -115,11 +122,39 @@ document.addEventListener("DOMContentLoaded", function () {
     addtext();
     drawgradient();
     drawSolid(angle);
+    calcinterval();
   });
   waktubelajarplus.addEventListener("click", function () {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     addtext();
     drawgradient();
     drawSolid(angle);
+    calcinterval();
   });
+
+  waktuIstirahatplus.addEventListener("click", function () {
+    calcintervalistirahat();
+  });
+
+  waktuIstirahatminus.addEventListener("click", function () {
+    calcintervalistirahat();
+  });
+
+  function calcinterval() {
+    let waktuinterval = parseInt(waktuBelajarElement.innerText);
+    let ms = waktuinterval * 60 * 1000;
+    ms = ms / 152;
+    interval = ms;
+    console.log(interval);
+    console.log(waktuinterval);
+  }
+
+  function calcintervalistirahat() {
+    let waktuistirahat = parseInt(waktuIstirahatElement.innerText);
+    let ms = waktuistirahat * 60 * 1000;
+    ms = ms / 152;
+    intervalistirahat = ms;
+  }
+  calcintervalistirahat();
+  calcinterval();
 });

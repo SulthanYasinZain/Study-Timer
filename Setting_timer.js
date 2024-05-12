@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
   waktubelajarminus.addEventListener("click", function () {
     if (waktuBelajarElement !== null) {
       let currentValue = parseInt(waktuBelajarElement.innerHTML);
-      if (currentValue > 5) {
-        waktuBelajarElement.innerText = (currentValue - 5)
+      if (currentValue > 1) {
+        waktuBelajarElement.innerText = (currentValue - 1)
           .toString()
           .padStart(2, "0");
       }
