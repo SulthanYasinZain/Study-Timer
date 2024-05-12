@@ -38,10 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let waktuBelajarElement = document.getElementById("waktu-belajar");
   let currentValue = parseInt(waktuBelajarElement.innerHTML);
 
-  if (currentValue == timer) {
-    alert.log("waktuBelajarElement is timer");
-  }
-
   reset.addEventListener("click", function () {
     totalSeconds = 0;
     timerElement.textContent = "00:00:00";

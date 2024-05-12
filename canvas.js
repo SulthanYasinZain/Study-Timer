@@ -1,7 +1,11 @@
+let active = false;
+
 document.addEventListener("DOMContentLoaded", function () {
   let waktuBelajarElement = document.getElementById("waktu-belajar");
+  let resettimer = document.getElementById("tombol-clear");
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
+  const button = document.getElementById("tombol-timer");
 
   var x = canvas.width / 2;
   var y = canvas.height;
@@ -63,11 +67,28 @@ document.addEventListener("DOMContentLoaded", function () {
       clearInterval(intervalId);
     }
     drawSolid(angle);
-    console.log(angle);
   }
   drawgradient();
   addtext();
   drawSolid(angle);
 
-  intervalId = setInterval(animate, 10);
+  button.addEventListener("mousedown", function () {
+    if (!active) {
+      intervalId = setInterval(animate, 10);
+      active = true;
+    } else {
+      clearInterval(intervalId);
+      active = false;
+    }
+  });
+
+  resettimer.addEventListener("click", function () {
+    clearInterval(intervalId);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    angle = 180;
+    active = false;
+    drawgradient();
+    addtext();
+    drawSolid(angle);
+  });
 });
