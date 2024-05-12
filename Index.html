@@ -12,36 +12,48 @@
   <body class="bg-zinc-800">
     <main class="flex flex-col justify-center items-center h-screen">
       <canvas id="canvas" height="150px" width="300px"></canvas>
-      <p id="timer">00:00:00</p>
-      <div>
-        <button id="tombol-timer" class="bg-green-600 rounded-md py-1 px-3">
+      <p id="timer" class="text-white text-3xl">00:00:00</p>
+      <div class="flex mt-2 gap-3">
+        <button
+          id="tombol-timer"
+          class="bg-green-600 text-white rounded-md py-1 px-3"
+        >
           Start
         </button>
-        <button id="tombol-clear" class="bg-blue-600 rounded-md py-1 px-3">
+        <button
+          id="tombol-clear"
+          class="bg-blue-600 text-white rounded-md py-1 px-3"
+        >
           Clear
         </button>
       </div>
 
-      <div class="flex space-x-8">
+      <div class="flex space-x-8 mt-5">
         <div class="text-center">
-          <p>Every</p>
-          <div class="flex flex-row">
-            <button id="Tombol-waktu"><img src="left.png" alt="" /></button>
-            <p id="waktu-belajar">25</p>
-            <button id="Tombol+waktu"><img src="right.png" alt="" /></button>
-          </div>
-          <p>Minutes</p>
-        </div>
-        <div class="text-center">
-          <p>Break For</p>
-          <div class="flex flex-row">
-            <button id="tombol-istirahat"><img src="left.png" alt="" /></button>
-            <p id="waktu-istirahat">05</p>
-            <button id="tombol+istirahat">
-              <img src="right.png" alt="" />
+          <p class="text-white">Every</p>
+          <div class="flex flex-row gap-1">
+            <button id="Tombol-waktu">
+              <img height="25px" width="25px" src="plus.png" alt="" />
+            </button>
+            <p id="waktu-belajar" class="text-white text-xl">25</p>
+            <button id="Tombol+waktu">
+              <img height="25px" width="25px" src="minus.png" alt="" />
             </button>
           </div>
-          <p>Minutes</p>
+          <p class="text-white">Minutes</p>
+        </div>
+        <div class="text-center">
+          <p class="text-white">Break For</p>
+          <div class="flex flex-row gap-1">
+            <button id="tombol-istirahat">
+              <img height="25px" width="25px" src="plus.png" alt="" />
+            </button>
+            <p id="waktu-istirahat" class="text-white text-xl">05</p>
+            <button id="tombol+istirahat">
+              <img height="25px" width="25px" src="minus.png" alt="" />
+            </button>
+          </div>
+          <p class="text-white">Minutes</p>
         </div>
       </div>
     </main>
