@@ -1,8 +1,10 @@
 let active = false;
-
+let intervalid;
 document.addEventListener("DOMContentLoaded", function () {
   let waktuBelajarElement = document.getElementById("waktu-belajar");
   let resettimer = document.getElementById("tombol-clear");
+  let waktubelajarplus = document.getElementById("Tombol+waktu");
+  let waktubelajarminus = document.getElementById("Tombol-waktu");
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
   const button = document.getElementById("tombol-timer");
@@ -57,6 +59,19 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx.fillText(waktuBelajarElement.innerText, 220, 120);
   }
 
+  function aniamtedown() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawgradient();
+    addtext();
+    if (angle > 182) {
+      angle -= 0.1;
+    } else {
+      clearInterval(intervalid);
+      intervalId = setInterval(animate, 10);
+    }
+    drawSolid(angle);
+  }
+
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawgradient();
@@ -65,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
       angle += 0.1;
     } else {
       clearInterval(intervalId);
+      intervalid = setInterval(aniamtedown, 10);
     }
     drawSolid(angle);
   }
@@ -78,17 +94,32 @@ document.addEventListener("DOMContentLoaded", function () {
       active = true;
     } else {
       clearInterval(intervalId);
+      clearInterval(intervalid);
       active = false;
     }
   });
 
   resettimer.addEventListener("click", function () {
     clearInterval(intervalId);
+    clearInterval(intervalid);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     angle = 180;
     active = false;
     drawgradient();
     addtext();
+    drawSolid(angle);
+  });
+
+  waktubelajarminus.addEventListener("click", function () {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    addtext();
+    drawgradient();
+    drawSolid(angle);
+  });
+  waktubelajarplus.addEventListener("click", function () {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    addtext();
+    drawgradient();
     drawSolid(angle);
   });
 });
